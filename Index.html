@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input {
+            padding: 5px;
+            margin-right: 10px;
+            width: 120px;
+        }
+        #colorButton {
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fun with JavaScript</h1>
+
+    <!-- Task 1: Button color change -->
+    <section>
+        <h2>1. Button Color Change</h2>
+        <button id="colorButton">Click me to change color!</button>
+    </section>
+
+    <!-- Task 2: Greeting alert -->
+    <section>
+        <h2>2. Greeting Alert</h2>
+        <button onclick="greetUser()">Click me for greeting</button>
+    </section>
+
+    <!-- Task 3: Basic calculator -->
+    <section>
+        <h2>3. Simple Calculator (Addition)</h2>
+        <input type="number" id="num1" placeholder="Enter first number">
+        <input type="number" id="num2" placeholder="Enter second number">
+        <button onclick="addNumbers()">Add</button>
+        <p id="result"></p>
+    </section>
+
+    <script>
+        // Task 1: Button color change
+        const colorButton = document.getElementById('colorButton');
+        colorButton.addEventListener('click', function() {
+            const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            colorButton.style.backgroundColor = randomColor;
+        });
+
+        // Task 2: Greeting alert
+        function greetUser() {
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting;
+
+            if (hour < 12) {
+                greeting = "Good Morning!";
+            } else if (hour < 18) {
+                greeting = "Good Afternoon!";
+            } else {
+                greeting = "Good Evening!";
+            }
+
+            alert(greeting);
+        }
+
+        // Task 3: Simple calculator
+        function addNumbers() {
+            const number1 = parseFloat(document.getElementById('num1').value);
+            const number2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(number1) || isNaN(number2)) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+
+            const sum = number1 + number2;
+            document.getElementById('result').innerText = "Result: " + sum;
+        }
+    </script>
+</body>
+</html>
